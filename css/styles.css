@@ -1,0 +1,224 @@
+:root { font-size: calc(1vw + 1vh + 1.5vmin); }
+* { top: 0; left: 0; bottom: 0; }
+
+body {
+	background-image: url("../img/overlay.png");
+	background-color: #010a00;
+}
+
+.main {
+	display: flex;
+	width: 1024px;
+	margin-left: 17%;
+}
+
+#screen {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	width: 676px;
+	height: 676px;
+	margin-top: -13px;
+	margin-left: -13px;
+	background-image: url('../img/bground.jpg');
+	background-size: cover;
+}
+
+.view {
+	overflow: hidden;
+	width: 650px;
+	height: 650px;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+.cell {
+	box-sizing: border-box;
+	width: 13px;
+	height: 13px;
+	/*border: 1px solid red;*/
+}
+
+.snakeBody {
+	background-image: url('../img/snakebody.png');
+	background-size: cover;
+	z-index: 1;
+}
+
+.snakeHead {
+	background-image: url('../img/snakehead-right.png');
+	background-size: cover;
+}
+
+/* Blinking apple - START*/
+.apple {
+  	font-size: 13px;
+  	color: #fff;
+  	font-weight: 900;
+  	animation: blur .75s ease-out infinite;
+  	text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
+}
+
+@keyframes blur {
+  from {
+    text-shadow:0px 0px 10px #fff,
+      0px 0px 10px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 25px #fff,
+      0px 0px 50px #fff,
+      0px 0px 50px #fff,
+      0px 0px 50px #7B96B8,
+      0px 0px 150px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px -10px 100px #7B96B8,
+      0px -10px 100px #7B96B8;
+  }
+}
+
+/* Blinking apple - END*/
+.score {
+	display: flex;
+	margin-left: -25px;
+	font-size: 28px;
+	font-weight: 600;
+}
+
+.scoreDiv {
+	margin-left: -35px;
+	font-size: 24px;
+	width: 120px;
+}
+
+/* Start button - BEGIN*/
+.overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	font-family: 'Titillium Web', sans-serif;
+	background-color: #010a00;
+  	background-image: url("../img/overlay.png");
+  	font-size: 1rem;
+}
+
+.btn {
+	top: 15%;
+	position: relative;
+	margin: 0 auto;
+	width: 10em;
+	color: #78FFCD;
+	border: .15em solid #78FFCD;
+	border-radius: 5em;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1.3em;
+	line-height: 2em;
+	cursor: pointer;
+}
+
+.dot {
+	content: '';
+	position: absolute;
+	width: calc(10em *.2);
+	height: 100%;
+	border-radius: 100%;
+	transition: all 300ms ease;
+	display: none;
+}
+
+.dot:after {
+	content: '';
+	position: absolute;
+	left: calc(50% - .4em);
+	top: -.4em;
+	height: .8em;
+	width: .8em;
+	background: #78FFCD;
+	border-radius: 1em;
+	border: .25em solid #fff;
+	box-shadow: 0 0 .7em #fff,
+				0 0 2em #78FFCD;
+}
+
+.btn:hover .dot,
+.btn:focus .dot {
+	animation: atom 2s infinite linear;
+	display: block;
+}
+
+@keyframes atom {
+	0% {transform: translateX(0) rotate(0);}
+	30%{transform: translateX(calc(10em - calc(10em *.2))) rotate(0);}
+	50% {transform: translateX(calc(10em - calc(10em *.2))) rotate(180deg);}
+	80% {transform: translateX(0) rotate(180deg);}
+	100% {transform: translateX(0) rotate(360deg);}
+}
+/* Start button - END*/
+
+.neon {
+	font-weight: 500;
+  	text-align: center;
+  	text-transform: uppercase;
+  	color: #fff;
+  	text-shadow:
+    	0 0 5px #fff,
+    	0 0 10px #fff,
+    	0 0 20px #fff,
+    	0 0 40px #0ff,
+    	0 0 80px #0ff,
+    	0 0 90px #0ff,
+    	0 0 100px #0ff,
+    	0 0 150px #0ff;
+}
+
+/* End game - BEGIN */
+.endgame {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('../img/died.jpg');
+	background-size: cover;
+	z-index: 9999;
+
+	display: none;
+	opacity: 0;
+	animation: show 2s 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes show {
+	 0% { opacity: 0; }
+	 100% { opacity: 1; }
+}
+
+.end-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 17%;
+	width: 100%;
+	height: 200px;
+	background-color: black;
+	opacity: 0.75;
+}
+
+.end-text span {
+	color: darkred;
+	font-size: 2.3em;
+
+	animation: upText 3s 1;
+	animation-fill-mode: forwards;
+	animation-delay: .7s;
+}
+
+@keyframes upText {
+	 0% { font-size: 2.3em; }
+	 100% { font-size: 2.7em; }
+}
+
+/* End game - END */
