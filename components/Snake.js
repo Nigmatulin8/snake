@@ -44,18 +44,20 @@ export default class Snake extends Game {
 			if (i === 0) {
 				head.classList.add('snakeHead');
 
-				// if(this.direction.currentDirect === 37) {
-				// 	head.style.backgroundImage = "url('../img/snakehead-left.png')";
-				// }
-				// if(this.direction.currentDirect === 38) {
-				// 	head.style.backgroundImage = "url('../img/snakehead-up.png')";
-				// }
-				// if(this.direction.currentDirect === 39) {
-				// 	head.style.backgroundImage = "url('../img/snakehead-right.png')";
-				// }
-				// if(this.direction.currentDirect === 40) {
-				// 	head.style.backgroundImage = "url('../img/snakehead-down.png')";
-				// }
+				if(this.direction.currentDirect === 37) {
+				 	head.style.backgroundImage = "url('../img/snakehead-left.png')";
+				}
+				if(this.direction.currentDirect === 38) {
+				 	head.style.backgroundImage = "url('../img/snakehead-up.png')";
+				}
+				if(this.direction.currentDirect === 39) {
+					head.style.backgroundImage = "url('../img/snakehead-right.png')";
+				}
+				if(this.direction.currentDirect === 40) {
+				 	head.style.backgroundImage = "url('../img/snakehead-down.png')";
+				}
+				
+				//switch(this.direction) {...}
 
 			}
 			else {
