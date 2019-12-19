@@ -39,27 +39,32 @@ export default class Snake extends Game {
 	}
 
 	drawSnake() {
+		if(this.snake.length === 5 && this.snake[0].posX === 27 && this.snake[0].posY === 28) {
+			dQs(`[posX = "27"][posY = "28"]`).classList.add('snakeHead-right');
+		}
+
 		for(let i = 0; i < this.snake.length; i++) {
 			let head = dQs(`[posX = "${this.snake[i].posX}"][posY = "${this.snake[i].posY}"]`);
-			if (i === 0) {
-				head.classList.add('snakeHead');
 
+			if (i === 0) {
 				if(this.direction.currentDirect === 37) {
-				 	head.style.backgroundImage = "url('../img/snakehead-left.png')";
+					head.classList.add('snakeHead-left');
+				 	//head.style.backgroundImage = "url('../img/snakehead-left.png')";
 				}
 				if(this.direction.currentDirect === 38) {
-				 	head.style.backgroundImage = "url('../img/snakehead-up.png')";
+					head.classList.add('snakeHead-up');
+				 	//head.style.backgroundImage = "url('../img/snakehead-up.png')";
 				}
 				if(this.direction.currentDirect === 39) {
-					head.style.backgroundImage = "url('../img/snakehead-right.png')";
+					head.classList.add('snakeHead-right');
+					//head.style.backgroundImage = "url('../img/snakehead-right.png')";
 				}
 				if(this.direction.currentDirect === 40) {
-				 	head.style.backgroundImage = "url('../img/snakehead-down.png')";
+					head.classList.add('snakeHead-down');
+				 	//head.style.backgroundImage = "url('../img/snakehead-down.png')";
 				}
-				
-				//switch(this.direction) {...}
-
 			}
+
 			else {
 				head.classList.add('snakeBody');
 			}
@@ -117,7 +122,10 @@ export default class Snake extends Game {
 
 	_updateCoords(oldHeadPos) {
 		//Snake head removal;
-		dQs(`[posX = "${oldHeadPos.posX}"][posY = "${oldHeadPos.posY}"]`).classList.remove('snakeHead');
+		dQs(`[posX = "${oldHeadPos.posX}"][posY = "${oldHeadPos.posY}"]`).classList.remove('snakeHead-up');
+		dQs(`[posX = "${oldHeadPos.posX}"][posY = "${oldHeadPos.posY}"]`).classList.remove('snakeHead-down');
+		dQs(`[posX = "${oldHeadPos.posX}"][posY = "${oldHeadPos.posY}"]`).classList.remove('snakeHead-left');
+		dQs(`[posX = "${oldHeadPos.posX}"][posY = "${oldHeadPos.posY}"]`).classList.remove('snakeHead-right');
 
 		//Creating an array copy;
 		let newArr = JSON.parse(JSON.stringify(this.snake));

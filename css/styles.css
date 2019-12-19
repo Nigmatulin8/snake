@@ -41,10 +41,30 @@ body {
 .snakeBody {
 	background-image: url('../img/snakebody.png');
 	background-size: cover;
-	z-index: 1;
+	z-index: 1000;
 }
 
-.snakeHead {
+/*.snakeHead {
+	background-image: url('../img/snakehead-right.png');
+	background-size: cover;
+}*/
+
+.snakeHead-up {
+	background-image: url('../img/snakehead-up.png');
+	background-size: cover;
+}
+
+.snakeHead-down {
+	background-image: url('../img/snakehead-down.png');
+	background-size: cover;
+}
+
+.snakeHead-left {
+	background-image: url('../img/snakehead-left.png');
+	background-size: cover;
+}
+
+.snakeHead-right {
 	background-image: url('../img/snakehead-right.png');
 	background-size: cover;
 }
